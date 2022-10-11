@@ -42,17 +42,19 @@ public class Human {
     }
 
     public Human(String name, Integer yearOfBirth, String town, String position) {
-      if (name == null) {
-          name = "Информация не указана";
-      } else {
-        this.name = name;
+
+        if (name == null) {
+            this.name = "(Информация не указана)";
+        } else {
+            this.name = name;
+        }
         if (yearOfBirth >= 0) {
             this.yearOfBirth = yearOfBirth;
         } else {
-            this.yearOfBirth = Math.abs(yearOfBirth);
+            this.yearOfBirth = 0;
         }
         if (town == null) {
-            town = "Информация не указана";
+            this.town = "(Информация не указана)";
         } else {
             this.town = town;
         }
@@ -63,7 +65,6 @@ public class Human {
         }
         System.out.println(this);
     }
-}
 
     @Override
     public String toString() {
