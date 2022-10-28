@@ -14,7 +14,7 @@ public class Human {
     }
 
     public Integer getYearOfBirth() {
-        return yearOfBirth;
+        return LocalDate.now().getYear() - yearOfBirth;
     }
 
     public String getTown() {
@@ -41,15 +41,15 @@ public class Human {
         this.position = position;
     }
 
-    public Human(String name, Integer yearOfBirth, String town, String position) {
+    public Human(String name, Integer age, String town, String position) {
 
         if (name == null) {
             this.name = "(Информация не указана)";
         } else {
             this.name = name;
         }
-        if (yearOfBirth >= 0) {
-            this.yearOfBirth = yearOfBirth;
+        if (age >= 0) {
+            this.yearOfBirth = LocalDate.now().getYear() - age;
         } else {
             this.yearOfBirth = 0;
         }
@@ -71,6 +71,6 @@ public class Human {
         return "Привет! Меня зовут " +
                 name + ", я из города " +
                 town +
-                ". Мне " + (Calendar.getInstance().get(Calendar.YEAR) - yearOfBirth) + " лет. Я работаю на должности " + position + ". Будем знакомы!";
+                ". Мне " + getYearOfBirth() + " лет. Я работаю на должности " + position + ". Будем знакомы!";
     }
 }
